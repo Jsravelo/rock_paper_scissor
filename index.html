@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <title>Rock, Paper, Scissors</title>
+    </head>
+
+<body>
+    <script>
+
+        // Get a random index from the Rock, Paper, Scissors array
+        function getComputerChoice(arr) {
+            const randomIndex = Math.floor(Math.random() * arr.length);           
+            const item = arr[randomIndex]
+            return item
+        }
+
+        const choice = ["Rock", "Paper", "Scissors"]
+
+        const computerSelection = getComputerChoice(choice)
+
+        // Prompt the user to enter their choice
+        let playerSelection = prompt("Select your choice").toLowerCase() 
+
+
+        // Evaluates if the computer or the user wins
+        function playRound(playerSelection, computerSelection) {
+        if (
+        (playerSelection === "rock" && computerSelection === "Paper") ||
+        (playerSelection === "paper" && computerSelection === "Scissors") ||
+        (playerSelection === "scissors" && computerSelection === "Rock")
+        ) {
+        return "You lose!";
+        } else if (
+        (playerSelection === "rock" && computerSelection === "Scissors") ||
+        (playerSelection === "paper" && computerSelection === "Rock") ||
+        (playerSelection === "scissors" && computerSelection === "Paper")
+        ) {
+        return "You win!";
+        } else {
+        return "It's a tie!";
+        }
+        }
+
+
+        playRound (playerSelection, computerSelection)
+
+
+
+
+
+
+    </script>
+</body>
+
+
+
+
+
+</html>
+
+
+
