@@ -10,14 +10,21 @@
 
         // Get a random index from the Rock, Paper, Scissors array
         function getComputerChoice(arr) {
-            const randomIndex = Math.floor(Math.random() * arr.length);           
+            const randomIndex = Math.floor(Math.random() * 3);           
             const item = arr[randomIndex]
             return item
         }
 
-        const choice = ["Rock", "Paper", "Scissors"]
+        const choice = ["Rock", "Paper", "Scissors"];
 
-        const computerSelection = getComputerChoice(choice)
+        const computerSelection = getComputerChoice(choice);
+
+        let counterComputer = 0;      
+        let counterPlayer = 0;  
+        const lose = "You lose!";
+        const win = "You win!"; 
+        const tie = "It's a tie!";        
+          
 
         // Prompt the user to enter their choice
         let playerSelection = prompt("Select your choice").toLowerCase() 
@@ -29,23 +36,41 @@
         (playerSelection === "rock" && computerSelection === "Paper") ||
         (playerSelection === "paper" && computerSelection === "Scissors") ||
         (playerSelection === "scissors" && computerSelection === "Rock")
-        ) {
-        return "You lose!";
+        ) {                       
+        return lose;
         } else if (
         (playerSelection === "rock" && computerSelection === "Scissors") ||
         (playerSelection === "paper" && computerSelection === "Rock") ||
         (playerSelection === "scissors" && computerSelection === "Paper")
-        ) {
-        return "You win!";
-        } else {
-        return "It's a tie!";
+        ) {              
+        return win;
+        } else {                    
+        return tie;
         }
         }
 
+        function game() {
+            if (playRound(playerSelection, computerSelection) == win) {
+                counterPlayer++;
+                console.log(counterPlayer)
+            } else if (playRound(playerSelection, computerSelection) == lose) {
+                counterComputer++;
+                console.log(counterComputer)
+            }
+        }
 
-        playRound (playerSelection, computerSelection)
+        playRound(playerSelection, computerSelection)
+        console.log(game())
+        playRound(playerSelection, computerSelection)
+        console.log(game())
+        playRound(playerSelection, computerSelection)
+        console.log(game())
+        playRound(playerSelection, computerSelection)
+        console.log(game())
+        playRound(playerSelection, computerSelection)
+        console.log(game())
 
-
+        
 
 
 
