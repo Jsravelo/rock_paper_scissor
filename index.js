@@ -2,7 +2,12 @@
 
 const choice = ["rock", "paper", "scissors"];
 
-let computerSelection = getComputerChoice;
+let computerSelection = getComputerChoice();
+
+let playerSelection = "rock"
+
+
+
 
 // Create function that takes a random choice
 
@@ -11,7 +16,7 @@ function getComputerChoice() {
     return option;
 }
 
-function checkWinner() {
+function checkWinner(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return "Tie";
     }
@@ -20,15 +25,25 @@ function checkWinner() {
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")
     ) {
-        return "Win"
+        return "Win";
     }
     else {
-        return "Lose"
+        return "Lose";
     }
 }
 
 
-
-funcion playRound (playerSelection, computerSelection) {
-
+function playRound(playerSelection, computerSelection) {
+    const result = checkWinner(playerSelection, computerSelection);
+    if (result == "Tie") {
+        return "It's a Tie!";
+    }
+    else if (result == "Win"){
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
+    else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
 }
+
+console.log(playRound(playerSelection, computerSelection))
