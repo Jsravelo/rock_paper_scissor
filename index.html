@@ -3,79 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>Rock, Paper, Scissors</title>
+        <script src="index.js"></script>
     </head>
 
-<body>
-    <script>
-
-        // Get a random index from the Rock, Paper, Scissors array
-        function getComputerChoice(arr) {
-            const randomIndex = Math.floor(Math.random() * 3);           
-            const item = arr[randomIndex]
-            return item
-        }
-
-        const choice = ["Rock", "Paper", "Scissors"];
-
-        const computerSelection = getComputerChoice(choice);
-
-        let counterComputer = 0;      
-        let counterPlayer = 0;  
-        const lose = "You lose!";
-        const win = "You win!"; 
-        const tie = "It's a tie!";        
-          
-
-        // Prompt the user to enter their choice
-        let playerSelection = prompt("Select your choice").toLowerCase() 
-
-
-        // Evaluates if the computer or the user wins
-        function playRound(playerSelection, computerSelection) {
-        if (
-        (playerSelection === "rock" && computerSelection === "Paper") ||
-        (playerSelection === "paper" && computerSelection === "Scissors") ||
-        (playerSelection === "scissors" && computerSelection === "Rock")
-        ) {                       
-        return lose;
-        } else if (
-        (playerSelection === "rock" && computerSelection === "Scissors") ||
-        (playerSelection === "paper" && computerSelection === "Rock") ||
-        (playerSelection === "scissors" && computerSelection === "Paper")
-        ) {              
-        return win;
-        } else {                    
-        return tie;
-        }
-        }
-
-        function game() {
-            if (playRound(playerSelection, computerSelection) == win) {
-                counterPlayer++;
-                console.log(counterPlayer)
-            } else if (playRound(playerSelection, computerSelection) == lose) {
-                counterComputer++;
-                console.log(counterComputer)
-            }
-        }
-
-        playRound(playerSelection, computerSelection)
-        console.log(game())
-        playRound(playerSelection, computerSelection)
-        console.log(game())
-        playRound(playerSelection, computerSelection)
-        console.log(game())
-        playRound(playerSelection, computerSelection)
-        console.log(game())
-        playRound(playerSelection, computerSelection)
-        console.log(game())
-
-        
-
-
-
-
-    </script>
+<body>  
 </body>
 
 
