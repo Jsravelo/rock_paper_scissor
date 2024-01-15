@@ -1,15 +1,27 @@
-// Declare and assign all variables
-
-const choice = ["rock", "paper", "scissors"];
-let computerScore = 0;
-let playerScore = 0;
-
+const choices = ["rock", "paper", "scissors"];
 
 // Create function that takes a random choice
 
-function getComputerChoice() {
-    const option = choice[Math.floor(Math.random() * choice.length)];
+function getComputerChoice() {    
+    const option = choices[Math.floor(Math.random() * choices.length)];
     return option;
+}
+
+// Create function that takes player input
+
+function playerInput(){
+    let validInput = false
+    while (validInput == false) {
+        const choice = prompt("Select Rock, Paper or Scissors");
+        if (choice == null) {
+            continue;
+        }
+        const choiceInLower = choice.toLowerCase()
+        if (choices.includes(choiceInLower)) {
+            validInput = true;
+            return choiceInLower
+        }        
+    }
 }
 
 // Create function that checks for winner
@@ -48,8 +60,10 @@ function playRound(playerSelection, computerSelection) {
 // Create a function that plays the game a tracks the score
 
 function game() {
+    let computerScore = 0;
+    let playerScore = 0;
     for (let i=0; i<5; i++) {
-        const playerSelection = prompt();
+        const playerSelection = playerInput();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection))
 
@@ -59,14 +73,20 @@ function game() {
         else if (checkWinner(playerSelection, computerSelection) == "Lose") {
             computerScore++;
         }
-        else {
-            computerScore = computerScore;
-            playerScore = playerScore;
-        }
     }
 
+    if (playerScore > computerScore) {
+        console.log("You win the game!!")
+    }
+    else if (computerScore > playerScore) {
+        console.log("You lose the game!!")
+    } 
+    else {
+        console.log("It's a tie!!")
+    }
+
+    console.log(`Computer score was ${computerScore}`)
+    console.log(`Player score was ${playerScore}`)
 }
 
 game()
-console.log(playerScore)
-console.log(computerScore)
