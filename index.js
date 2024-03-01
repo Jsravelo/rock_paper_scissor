@@ -1,4 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
+let computerScore = 0;
+let playerScore = 0;
 
 // Create function that takes a random choice
 
@@ -7,28 +9,43 @@ function getComputerChoice() {
     return option;
 }
 
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const outcome = document.querySelector('.outcomeDiv');
+const p = document.createElement('p');    
 
+rock.addEventListener('click', () => {
+    const playerSelection = 'rock';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    if (p.innerText == '') {
+        outcome.removeChild(p);
+    }
+});
 
-// Create function that takes player input
+paper.addEventListener('click', () => {
+    const playerSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    if (p.innerText == '') {
+        outcome.removeChild(p);
+    }
+});
 
-// function playerInput(){
-//     let validInput = false
-//     while (validInput == false) {
-//         const choice = prompt("Select Rock, Paper or Scissors");
-//         if (choice == null) {
-//             continue;
-//         }
-//         const choiceInLower = choice.toLowerCase()
-//         if (choices.includes(choiceInLower)) {
-//             validInput = true;
-//             return choiceInLower
-//         }        
-//     }
-// }
+scissors.addEventListener('click', () => {
+    const playerSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    if (p.innerText == '') {
+        outcome.removeChild(p);
+    }
+});
 
 // Create function that checks for winner
 
 function checkWinner(playerSelection, computerSelection) {
+
     if (playerSelection == computerSelection) {
         return "Tie";
     }
@@ -38,8 +55,7 @@ function checkWinner(playerSelection, computerSelection) {
         (playerSelection == "scissors" && computerSelection == "paper")
     ) {
         return "Win";
-    }
-    else {
+    } else {
         return "Lose";
     }
 }
@@ -48,44 +64,26 @@ function checkWinner(playerSelection, computerSelection) {
 
 function playRound(playerSelection, computerSelection) {
     const result = checkWinner(playerSelection, computerSelection);
+
+ 
+
     if (result == "Tie") {
-        return "It's a Tie!";
+        p.textContent = "It's a Tie!";
+        outcome.appendChild(p);
     }
-    else if (result == "Win"){
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    else if (result == "Win") {
+        playerScore++;
+        p.textContent = `Your score is ${playerScore} and the computer score is ${computerScore}`;
+        outcome.appendChild(p);
     }
     else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        computerScore++;
+        p.textContent = `Your score is ${playerScore} and the computer score is ${computerScore}`;
+        outcome.appendChild(p);
     }
+
+    // p.innerText == '';
 }
-
-
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
-
-rock.addEventListener('click', () => {
-    const playerSelection = 'rock';
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    // Do something with the result
-});
-
-paper.addEventListener('click', () => {
-    const playerSelection = 'paper';
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    // Do something with the result
-});
-
-scissors.addEventListener('click', () => {
-    const playerSelection = 'scissors';
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    // Do something with the result
-});
-
-
 
 // Create a function that plays the game a tracks the score
 
