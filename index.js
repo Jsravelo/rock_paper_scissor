@@ -13,7 +13,9 @@ const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const outcome = document.querySelector('.outcomeDiv');
-const p = document.createElement('p');    
+const p = document.createElement('p');
+const display = document.querySelector('.choice');
+const choice = document.createElement('p');   
 
 rock.addEventListener('click', () => {
     const playerSelection = 'rock';
@@ -21,7 +23,10 @@ rock.addEventListener('click', () => {
     playRound(playerSelection, computerSelection);
     if (p.innerText == '') {
         outcome.removeChild(p);
-    }
+    };
+
+    choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
+    display.appendChild(choice)
 });
 
 paper.addEventListener('click', () => {
@@ -30,7 +35,10 @@ paper.addEventListener('click', () => {
     playRound(playerSelection, computerSelection);
     if (p.innerText == '') {
         outcome.removeChild(p);
-    }
+    };
+
+    choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
+    display.appendChild(choice)
 });
 
 scissors.addEventListener('click', () => {
@@ -39,7 +47,10 @@ scissors.addEventListener('click', () => {
     playRound(playerSelection, computerSelection);
     if (p.innerText == '') {
         outcome.removeChild(p);
-    }
+    };
+ 
+    choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
+    display.appendChild(choice)
 });
 
 // Create function that checks for winner
@@ -81,8 +92,6 @@ function playRound(playerSelection, computerSelection) {
         p.textContent = `Your score is ${playerScore} and the computer score is ${computerScore}`;
         outcome.appendChild(p);
     }
-
-    // p.innerText == '';
 }
 
 // Create a function that plays the game a tracks the score
