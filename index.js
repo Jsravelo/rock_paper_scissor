@@ -15,7 +15,9 @@ const scissors = document.querySelector('.scissors');
 const outcome = document.querySelector('.outcomeDiv');
 const p = document.createElement('p');
 const display = document.querySelector('.choice');
-const choice = document.createElement('p');   
+const choice = document.createElement('p'); 
+const gameResult = document.querySelector('.endgame');
+const reset = document.querySelector('.reset')
 
 rock.addEventListener('click', () => {
     const playerSelection = 'rock';
@@ -26,7 +28,9 @@ rock.addEventListener('click', () => {
     };
 
     choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
-    display.appendChild(choice)
+    display.appendChild(choice);
+
+    game(playerScore, computerScore)
 });
 
 paper.addEventListener('click', () => {
@@ -38,7 +42,9 @@ paper.addEventListener('click', () => {
     };
 
     choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
-    display.appendChild(choice)
+    display.appendChild(choice);
+
+    game(playerScore, computerScore)
 });
 
 scissors.addEventListener('click', () => {
@@ -50,7 +56,9 @@ scissors.addEventListener('click', () => {
     };
  
     choice.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}`;
-    display.appendChild(choice)
+    display.appendChild(choice);
+
+    game(playerScore, computerScore)
 });
 
 // Create function that checks for winner
@@ -76,8 +84,6 @@ function checkWinner(playerSelection, computerSelection) {
 function playRound(playerSelection, computerSelection) {
     const result = checkWinner(playerSelection, computerSelection);
 
- 
-
     if (result == "Tie") {
         p.textContent = "It's a Tie!";
         outcome.appendChild(p);
@@ -93,6 +99,27 @@ function playRound(playerSelection, computerSelection) {
         outcome.appendChild(p);
     }
 }
+
+
+function game(playerScore, computerScore) {
+    if (playerScore === 5) {
+        gameResult.innerText = `Congratulations! You have won!`;
+    } else if (computerScore === 5) {
+        gameResult.innerText = `Boo! You lose!`;
+    }
+
+ 
+
+}
+
+
+
+reset.addEventListener('click', () => {
+    choice.innerText = '';
+    p.innerText = '';
+    gameResult.innerText = '';
+
+})
 
 // Create a function that plays the game a tracks the score
 
